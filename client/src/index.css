@@ -1,0 +1,105 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+body {
+	text-align: center;
+	background-color: grey;
+	
+}
+
+.app-header {
+	border-bottom: solid black 3px;
+	height: 150px;
+	background-color: lightgrey;
+}
+
+img {
+	display: block;
+	width: 400px;
+	height: 400px;
+	margin: 2rem auto;
+}
+
+
+
+h1 {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+}
+
+input {
+  margin-top: 50px;
+	appearance: none;
+	outline: none;
+	border: none;
+	background: #EEE;
+	width: 100%;
+	max-width: 520px;
+	padding: 0.5rem 1rem;
+	border-radius: 0.5rem;
+	margin-right: 1rem;
+}
+
+.gridd {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	
+  }
+
+footer {
+	position: fixed;
+    text-align: center;
+    width: 100%;
+    background-color: lightgray;
+    color: black;
+    z-index: 999;
+	bottom: 0;
+    height: 40px;
+    font-size: 15px;
+    padding: 4px;
+    border-top: solid black 3px;
+}  
+
+.modalDel {
+	background-color: green;
+}
+
+@media screen and (max-width: 900px) {
+	.home {
+		max-width: 600px;
+		margin-top: 150px;
+		margin-left: 0px;
+	}
+	.gridd {
+		margin-left: 0px !important;
+		justify-content: left;
+		width: 500px;
+		margin: 1px !important;
+	}
+	input {
+		width: 300px;
+	}
+	.app-header {
+		width: 340px;
+	}
+	Modal {
+		max-width: 300px;
+	}
+	.card {
+		width: 150px;
+	}
+
+	.imgGenerate {
+		width: 300px;
+	}
+
+	.imgGenerateHom {
+		max-width: 300px;
+		margin-left: 0px !important;
+	}
+}
