@@ -3,7 +3,7 @@ import logoqr from "../assets/images/logoqr.png";
 import Button from "react-bootstrap/Button";
 import Generate from "./Generate";
 
-function Header({ inputHandler, checkShow }) {
+function Header({ inputHandler, checkShow, setModal1 }) {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
 
@@ -28,7 +28,7 @@ function Header({ inputHandler, checkShow }) {
       >
         Show
       </Button>
-      <Generate handleShow={handleShow} show={show} setShow={setShow}  />
+      <Generate handleShow={handleShow} show={show} setShow={setShow} setModal1={setModal1} />
     </div>
   );
 }

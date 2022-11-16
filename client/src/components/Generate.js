@@ -9,7 +9,7 @@ import { BsTrash } from "react-icons/bs";
 import { RiArrowGoBackLine } from "react-icons/ri";
 
 
-function Generate({ show, setShow }) {
+function Generate({ show, setShow, setModal1 }) {
   const [url, setUrl] = useState("");
   const [qr, setQr] = useState("");
   const [title, setTitle] = useState("");
@@ -125,7 +125,8 @@ function Generate({ show, setShow }) {
               <BsDownload color="red" />
             </Button>
             <Button
-              
+            // eslint-disable-next-line
+              onClick={() => (setModal1(true), handleClose())}
               style={{
                 backgroundColor: "white",
                 border: "none",

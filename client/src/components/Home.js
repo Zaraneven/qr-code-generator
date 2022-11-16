@@ -13,6 +13,7 @@ const Home = () => {
   const [inputText, setInputText] = useState("");
   const [card, setCard] = useState(false);
   const [check, setCheck] = useState(false);
+  const [modal1, setModal1] = useState(false)
   
 
   useEffect(() => {
@@ -50,7 +51,7 @@ const Home = () => {
         inputHandler={inputHandler}
         setCard={setCard}
         checkShow={checkShow}
-        
+        setModal1={setModal1}
       />
       <div className="home">
         {!card && !inputText && (
@@ -73,7 +74,7 @@ const Home = () => {
           <div className="gridd">
             {filteredData.map((qr) => (
               <div>
-                <Show qrcode={qr} key={qrco._id} />
+                <Show qrcode={qr} key={qrco._id} setModal1={setModal1} modal1={modal1} />
               </div>
             ))}
           </div>

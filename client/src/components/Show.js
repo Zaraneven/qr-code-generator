@@ -10,10 +10,10 @@ import { BsDownload } from "react-icons/bs";
 import {RiArrowGoBackLine} from 'react-icons/ri'
 import ModalDelete from "./ModalDelete";
 
-const Show = ({ qrcode }) => {
+const Show = ({ qrcode, setModal1, modal1 }) => {
   
   const [open, setOpen] = useState(false)
-  const [modal1, setModal1] = useState(false)
+  //const [modal1, setModal1] = useState(false)
   const handleOpen = () => setOpen(true);
   const handleCloseModal = () => setOpen(false)
   const [qr, setQr] = useState("");
