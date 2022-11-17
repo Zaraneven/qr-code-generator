@@ -8,7 +8,6 @@ import { insertQrcode } from "../api/qcode";
 import { BsTrash } from "react-icons/bs";
 import { RiArrowGoBackLine } from "react-icons/ri";
 
-
 function Generate({ show, setShow, setModal1 }) {
   const [url, setUrl] = useState("");
   const [qr, setQr] = useState("");
@@ -16,9 +15,9 @@ function Generate({ show, setShow, setModal1 }) {
 
   const handleClose = () => {
     setShow(false);
-    setUrl('')
-    setTitle('')
-  }
+    setUrl("");
+    setTitle("");
+  };
 
   const GenerateQRCode = (e) => {
     QRCode.toDataURL(
@@ -125,7 +124,7 @@ function Generate({ show, setShow, setModal1 }) {
               <BsDownload color="red" />
             </Button>
             <Button
-            // eslint-disable-next-line
+              // eslint-disable-next-line
               onClick={() => (setModal1(true), handleClose())}
               style={{
                 backgroundColor: "white",

@@ -7,7 +7,6 @@ function Header({ inputHandler, checkShow, setModal1 }) {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
 
-  
   return (
     <div className="app-header" style={{ marginTop: "0px" }}>
       <div className="app">
@@ -28,7 +27,12 @@ function Header({ inputHandler, checkShow, setModal1 }) {
       >
         Show
       </Button>
-      <Generate handleShow={handleShow} show={show} setShow={setShow} setModal1={setModal1} />
+      <Generate
+        handleShow={handleShow}
+        show={show}
+        setShow={setShow}
+        setModal1={setModal1}
+      />
     </div>
   );
 }
