@@ -17,6 +17,7 @@ function Generate({ show, setShow, setModal1 }) {
     setShow(false);
     setUrl("");
     setTitle("");
+    setQr('')
   };
 
   const GenerateQRCode = (e) => {
@@ -112,6 +113,7 @@ function Generate({ show, setShow, setModal1 }) {
               <RiArrowGoBackLine color="green" />
             </Button>
             <Button
+              onClick={handleClose}
               href={qr}
               download="qrcode.png"
               variant="secondary"
