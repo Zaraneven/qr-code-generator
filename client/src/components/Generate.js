@@ -7,40 +7,83 @@ import { BsDownload } from "react-icons/bs";
 import { insertQrcode } from "../api/qcode";
 import { BsTrash } from "react-icons/bs";
 import { RiArrowGoBackLine } from "react-icons/ri";
+import validator from "validator";
 
 function Generate({ show, setShow, setModal1 }) {
   const [url, setUrl] = useState("");
   const [qr, setQr] = useState("");
   const [title, setTitle] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [val, setVal] = useState("");
+  const [valName, setValName] = useState("");
+  const [error, setError] = useState("");
+  const [err, setErr] = useState(false);
 
   const handleClose = () => {
     setShow(false);
     setUrl("");
     setTitle("");
-    setQr('')
+    setQr("");
+    setVal("");
+    setError('')
+    setErrorMessage('')
   };
 
   const GenerateQRCode = (e) => {
-    QRCode.toDataURL(
-      url,
-      {
-        width: 800,
-        margin: 2,
-        color: {
-          dark: "#335383FF",
-          light: "#EEEEEEFF",
+    if (title === "" || title.length < 2 || title.length > 25) {
+      setError("Please enter title (min 2 and max 25 characters) !!!");
+    }
+     else if (err === false) {
+      QRCode.toDataURL(
+        url,
+        {
+          width: 800,
+          margin: 2,
+          color: {
+            dark: "#335383FF",
+            light: "#EEEEEEFF",
+          },
         },
-      },
-      (err, url) => {
-        if (err) return console.error(err);
+        (err, url) => {
+          if (err) return console.error(err);
 
-        console.log(url);
-        setQr(url);
+          console.log(url);
+          setQr(url);
+        }
+      );
+
+      e.preventDefault();
+      if (title && url) {
+        insertQrcode({ title: title, url: url });
       }
-    );
-    e.preventDefault();
-    if (title && url) {
-      insertQrcode({ title: title, url: url });
+    }
+  };
+
+  const validate = (e) => {
+    setVal(e.target.value);
+    if (validator.isURL(val)) {
+      setErrorMessage("Is Valid URL");
+      setUrl(e.target.value);
+    } else {
+      setErrorMessage("Is Not Valid URL");
+    }
+  }; 
+  
+
+  function containsSpecialChars(str) {
+    const specialChars = /[`!@#$%^&*()_+\-=\]{};':"\\|,.<>?~]/;
+    return specialChars.test(str);
+  }
+
+  const validateName = (e) => {
+    setValName(e.target.value);
+    if (containsSpecialChars(valName)) {
+      setError("Only letters and numbers !");
+      setErr(true);
+      return;
+    } else {
+      setTitle(e.target.value);
+      setErr(false);
     }
   };
 
@@ -62,21 +105,23 @@ function Generate({ show, setShow, setModal1 }) {
                   value={title}
                   type="text"
                   autoFocus
-                  onChange={(e) => setTitle(e.target.value)}
+                  onChange={validateName}
                 />
+                <span>{error}</span>
               </Form.Group>
               <Form.Group
                 className="mb-3"
                 controlId="exampleForm.ControlTextarea1"
               >
-                <Form.Control
+                <Form.Control 
+                  type="type"
                   as="textarea"
                   rows={3}
-                  type="text"
                   placeholder="Enter URL for your QR Code ..."
-                  value={url}
-                  onChange={(e) => setUrl(e.target.value)}
+                  value={val}
+                  onChange={validate}
                 />
+                <span>{errorMessage}</span>
               </Form.Group>
             </Form>
           </Modal.Body>

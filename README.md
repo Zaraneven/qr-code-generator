@@ -11,11 +11,15 @@ Clone the repo https://github.com/Zaraneven/qr-code-generator
 
 Install NPM packages
 
-Add .env file in backend folder with following key value pairs:
+Add .env file in backend folder (server) with following key value pairs:
 
 PORT
 DB
-npm install Strat the project
+
+Add .env file in frontend folder (client) with following key value pairs:
+REACT_APP_BACKEND_URL // envBackendUrl = process.env.REACT_APP_BACKEND_URL;
+
+npm install Start the project
 
 Server: npm start
 
